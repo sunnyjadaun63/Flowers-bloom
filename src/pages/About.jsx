@@ -24,7 +24,7 @@ const timelineSteps = [
   {
     year: "2019",
     title: "Copenhagen Roots",
-    description: "Aura Blooms was born in a small studio in Denmark out of a desire to create a modern, minimalist alternative to traditional commercial floristry."
+    description: "Handal Flowers & Events was born in a small studio in Denmark out of a desire to create a modern, minimalist alternative to traditional commercial floristry."
   },
   {
     year: "2021",
@@ -71,7 +71,7 @@ export default function About() {
             </h1>
             
             <p className="font-sans text-xs sm:text-sm text-warm-neutral leading-relaxed">
-              Founded on the principles of Danish minimalism and sustainable direct trade, Aura Blooms creates botanical art for modern spaces. We believe that flowers should bring sensory joy without compromising the environment.
+              Founded on the principles of Danish minimalism and sustainable direct trade, Handal Flowers & Events creates botanical art for modern spaces. We believe that flowers should bring sensory joy without compromising the environment.
             </p>
 
             <blockquote className="border-l-2 border-stone-line pl-4 italic text-xs text-warm-neutral font-serif">

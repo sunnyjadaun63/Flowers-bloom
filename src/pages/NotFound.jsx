@@ -76,7 +76,7 @@ export default function NotFound() {
             />
             {/* Soft text overlay */}
             <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xs p-4 border border-stone-line rounded-xs text-left">
-              <span className="font-serif text-[11px] italic text-botanical block font-medium">Aura Blooms Journal</span>
+              <span className="font-serif text-[11px] italic text-botanical block font-medium">Handal Flowers & Events Journal</span>
               <p className="font-sans text-[10px] text-warm-neutral mt-0.5">Minimalist close-up of a white garden rose in soft morning light.</p>
             </div>
           </div>

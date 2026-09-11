@@ -193,7 +193,7 @@ export default function ProductDetailPage() {
 
           {/* Base Price and Description */}
           <div className="border-y border-stone-line py-5 flex items-baseline justify-between">
-            <span className="text-2xl font-bold font-sans text-charcoal">${product.price}</span>
+            <span className="text-xl font-bold font-sans text-botanical uppercase tracking-wider bg-stone-100 px-3.5 py-1.5 rounded-full">Coming Soon</span>
             <span className="text-xs text-warm-neutral">Complimentary delivery wrapping included</span>
           </div>
 
@@ -303,7 +303,7 @@ export default function ProductDetailPage() {
                     {/* Name & price */}
                     <div className="flex-1 min-w-0">
                       <h5 className="font-serif text-[13px] text-charcoal font-semibold truncate">{item.name}</h5>
-                      <span className="font-sans text-[10px] text-warm-neutral">+${item.price}</span>
+                      <span className="font-sans text-[10px] font-bold text-botanical uppercase tracking-wider">Coming Soon</span>
                     </div>
                     {/* Circle Checkbox */}
                     <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
@@ -364,7 +364,7 @@ export default function ProductDetailPage() {
                 className="flex-1 bg-terracotta hover:bg-opacity-95 text-white py-3 px-6 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2 rounded-xs shadow-md transition-all focus:outline-none"
               >
                 <ShoppingCart className="w-4 h-4" />
-                <span>Add to Cart • ${(totalPrice).toFixed(2)}</span>
+                <span>Add to Cart • Coming Soon</span>
               </button>
 
               {/* Wishlist Button */}

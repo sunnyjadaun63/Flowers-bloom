@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import { ShopPageRibbons } from '../components/DecorativeRibbon';
 import { ArrowLeft, Sparkles, SlidersHorizontal, BookOpen, Quote } from 'lucide-react';
 
 const sentiments = {
@@ -118,7 +119,9 @@ export default function OccasionCatalogPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-left space-y-10 animate-in fade-in duration-300">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-left space-y-10 animate-in fade-in duration-300">
+      {/* Green Ribbon Cutouts on empty side spaces */}
+      <ShopPageRibbons />
       
       {/* Return Navigation */}
       <Link to="/" className="inline-flex items-center space-x-1.5 text-xs uppercase tracking-widest font-semibold text-botanical hover:text-terracotta transition-colors">
@@ -190,24 +193,19 @@ export default function OccasionCatalogPage() {
               </span>
             </div>
 
-            {/* Price slider */}
-            <div className="space-y-2">
-              <label className="block text-[10px] uppercase tracking-wider font-semibold text-charcoal">
-                Max Budget: <span className="font-bold text-botanical">${priceRange}</span>
-              </label>
-              <input 
-                type="range" 
-                min={50} 
-                max={160} 
-                step={5}
-                value={priceRange} 
-                onChange={(e) => setPriceRange(Number(e.target.value))}
-                className="w-full accent-botanical cursor-pointer"
-              />
-              <div className="flex justify-between text-[9px] text-warm-neutral font-medium">
-                <span>$50</span>
-                <span>$160</span>
+            {/* Price Status */}
+            <div className="space-y-1.5 bg-stone-50 border border-stone-line/60 p-3 rounded-xs">
+              <span className="block text-[10px] uppercase tracking-wider font-semibold text-charcoal">
+                Occasion Stems Pricing
+              </span>
+              <div className="flex items-center space-x-2">
+                <span className="font-sans text-[11px] font-bold text-botanical uppercase tracking-wider bg-white border border-botanical/20 px-2.5 py-0.5 rounded-full shadow-xs">
+                  Coming Soon
+                </span>
               </div>
+              <p className="text-[10px] text-warm-neutral mt-1 leading-tight">
+                Live pricing for curated arrangements is coming soon.
+              </p>
             </div>
 
             {/* Vibe Selector */}
@@ -266,7 +264,7 @@ export default function OccasionCatalogPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import ThemeSwitcher from './ThemeSwitcher';
 import { 
   ShoppingBag, 
   Heart, 
@@ -9,7 +10,8 @@ import {
   Calendar, 
   Menu, 
   X, 
-  ChevronDown 
+  ChevronDown, 
+  Sparkles 
 } from 'lucide-react';
 
 const occasionsList = [
@@ -27,10 +29,38 @@ const shopCategories = [
   { name: "All Flowers", path: "all" },
   { name: "Best Sellers", path: "best-sellers" },
   { name: "New Arrivals", path: "new-arrivals" },
+  { name: "Artificial Flowers", path: "artificial-flowers", isDirect: true, badge: "Silk & Faux" },
   { name: "Bouquets", path: "bouquets" },
   { name: "Roses", path: "roses" },
   { name: "Seasonal Flowers", path: "seasonal" },
   { name: "Plants & Gift Baskets", path: "plants-baskets" }
+];
+
+const eventMenuItems = [
+  {
+    name: "Weddings & Nuptials",
+    path: "weddings",
+    tagline: "Ceremonies, Receptions & Micro-Weddings",
+    count: "9 Services"
+  },
+  {
+    name: "Birthday & Family",
+    path: "birthdays",
+    tagline: "Milestones, Baby Showers & Reunions",
+    count: "10 Services"
+  },
+  {
+    name: "Corporate & Grand Openings",
+    path: "corporate",
+    tagline: "Ribbon-Cuttings, Galas & Product Launches",
+    count: "10 Services"
+  },
+  {
+    name: "Community & Festivals",
+    path: "festivals",
+    tagline: "Cultural Fairs, Charities & Markets",
+    count: "8 Services"
+  }
 ];
 
 export default function Navbar({ onSearchTrigger }) {
@@ -78,7 +108,7 @@ export default function Navbar({ onSearchTrigger }) {
     <>
       {/* Top Announcement Bar */}
       <div className="bg-[#1B3B2B] text-white text-xs py-2 px-6 text-center tracking-widest font-sans uppercase font-medium w-full">
-        Same-Day Hand Delivery | 7-Day Freshness Guarantee | Complimentary Floral Note on Every Order
+        Same-Day Hand Delivery | 7-Day Freshness Guarantee | Full-Service Bespoke Event Planning
       </div>
 
       {/* Sticky Navigation Header (Full Width) */}
@@ -99,7 +129,7 @@ export default function Navbar({ onSearchTrigger }) {
               </button>
 
               {/* Delivery Checker Pill */}
-              <button
+              {/* <button
                 onClick={handleZipPillClick}
                 className="hidden md:flex items-center space-x-2 bg-stone-50 border border-stone-line rounded-full px-4 py-1.5 text-[11px] hover:border-black hover:bg-white transition-all duration-200 whitespace-nowrap"
               >
@@ -113,20 +143,23 @@ export default function Navbar({ onSearchTrigger }) {
                     {new Date(deliveryDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   </span>
                 )}
-              </button>
+              </button> */}
             </div>
 
             {/* Middle: Brand Logo (Centered) */}
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
               <Link to="/" className="flex items-center group">
-                <span className="font-instrument text-2xl sm:text-3xl lg:text-4xl tracking-tight font-normal text-[#000000] group-hover:opacity-80 transition-opacity duration-200">
-                  AURA BLOOMS<sup className="text-xs ml-0.5 font-sans">®</sup>
+                <span className="font-instrument text-2xl sm:text-3xl lg:text-4xl tracking-tight font-normal text-[#ff0074] group-hover:opacity-80 transition-opacity duration-200">
+                 <b>Handal Flowers & Events</b> <sup className="text-xs ml-0.5 font-sans">®</sup>
                 </span>
               </Link>
             </div>
 
-            {/* Right: Search, Wishlist, Cart & CTA */}
-            <div className="flex items-center space-x-2 sm:space-x-4 z-20">
+            {/* Right: Theme Switcher, Search, Wishlist, Cart & CTA */}
+            <div className="flex items-center space-x-2 sm:space-x-3 z-20">
+              {/* Theme Switcher Component */}
+              <ThemeSwitcher />
+
               <button 
                 onClick={onSearchTrigger}
                 className="p-2 text-charcoal hover:text-black transition-colors focus:outline-none"
@@ -162,10 +195,11 @@ export default function Navbar({ onSearchTrigger }) {
               </button>
 
               <Link
-                to="/shop/all"
-                className="hidden lg:inline-flex rounded-full px-6 py-2.5 text-xs bg-[#000000] text-white hover:scale-[1.03] transition-transform font-medium"
+                to="/events"
+                className="hidden lg:inline-flex rounded-full px-5 py-2 text-xs bg-[#1B3B2B] text-white hover:bg-black transition-colors font-medium items-center space-x-1 shadow-xs"
               >
-                Order Stems
+                <Sparkles className="w-3 h-3 text-amber-300" />
+                <span>Plan Event</span>
               </Link>
             </div>
           </div>
@@ -188,10 +222,17 @@ export default function Navbar({ onSearchTrigger }) {
                     {shopCategories.map((cat) => (
                       <Link 
                         key={cat.path} 
-                        to={`/shop/${cat.path}`}
-                        className="text-left text-xs tracking-wider normal-case py-1.5 hover:text-black border-b border-transparent hover:border-stone-line transition-all duration-150 text-warm-neutral hover:pl-1"
+                        to={cat.isDirect ? `/${cat.path}` : `/shop/${cat.path}`}
+                        className={`text-left text-xs tracking-wider normal-case py-1.5 hover:text-black border-b border-transparent hover:border-stone-line transition-all duration-150 flex items-center justify-between ${
+                          cat.badge ? 'text-black font-semibold hover:pl-1' : 'text-warm-neutral hover:pl-1'
+                        }`}
                       >
-                        {cat.name}
+                        <span>{cat.name}</span>
+                        {cat.badge && (
+                          <span className="text-[9px] uppercase font-bold bg-amber-100 text-amber-900 border border-amber-200 px-2 py-0.5 rounded-full">
+                            {cat.badge}
+                          </span>
+                        )}
                       </Link>
                     ))}
                   </div>
@@ -242,21 +283,58 @@ export default function Navbar({ onSearchTrigger }) {
                 </div>
               </div>
 
-              {/* Best Sellers Direct Link */}
-              <Link 
-                to="/shop/best-sellers" 
-                className="hover:text-black transition-colors duration-200"
-              >
-                Best Sellers
-              </Link>
+              {/* NEW: Event Planning Dropdown */}
+              <div className="relative group py-3">
+                <button 
+                  onClick={() => navigate('/events')}
+                  className="flex items-center space-x-1 text-black font-bold hover:text-[#1B3B2B] transition-colors duration-200"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Event Planning</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-warm-neutral transition-transform duration-200 group-hover:rotate-180" />
+                </button>
+                
+                <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white border border-stone-line p-6 w-[620px] rounded-sm shadow-2xl scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-stone-line">
+                    <div>
+                      <h4 className="font-instrument text-xl font-bold text-black tracking-normal normal-case">
+                        Bespoke Events & Production
+                      </h4>
+                      <p className="text-[11px] text-warm-neutral normal-case tracking-normal">
+                        Full-scale floral engineering, venue styling & day-of coordination
+                      </p>
+                    </div>
+                    <Link 
+                      to="/events"
+                      className="text-[11px] font-semibold text-botanical hover:underline normal-case tracking-normal"
+                    >
+                      View All Verticals →
+                    </Link>
+                  </div>
 
-              {/* Hand-Tied Bouquets Direct Link */}
-              <Link 
-                to="/shop/bouquets" 
-                className="hover:text-black transition-colors duration-200"
-              >
-                Bouquets
-              </Link>
+                  <div className="grid grid-cols-2 gap-4">
+                    {eventMenuItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={`/events/${item.path}`}
+                        className="p-3 bg-stone-50 hover:bg-stone-100 border border-stone-line/60 rounded-sm transition-all group/item text-left normal-case tracking-normal"
+                      >
+                        <div className="flex justify-between items-start">
+                          <span className="font-instrument text-base font-bold text-black group-hover/item:text-botanical transition-colors">
+                            {item.name}
+                          </span>
+                          <span className="text-[9px] uppercase font-bold bg-white border border-stone-line px-2 py-0.5 rounded-full text-warm-neutral">
+                            {item.count}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-warm-neutral mt-1 line-clamp-1">
+                          {item.tagline}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* Corporate Gifts */}
               <Link 
@@ -295,8 +373,8 @@ export default function Navbar({ onSearchTrigger }) {
           />
           <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white border-r border-stone-line shadow-2xl p-6 overflow-y-auto">
             <div className="flex items-center justify-between pb-6 border-b border-stone-line">
-              <span className="font-instrument text-2xl tracking-tight text-black">
-                AURA BLOOMS<sup className="text-xs ml-0.5">®</sup>
+              <span className="font-instrument text-2xl tracking-tight text-[#ff0074]">
+           <b>Handal Flowers & Events</b>     <sup className="text-xs ml-0.5">®</sup>
               </span>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
@@ -306,7 +384,10 @@ export default function Navbar({ onSearchTrigger }) {
               </button>
             </div>
 
-            <div className="py-6 space-y-4">
+            <div className="py-4 space-y-4 text-left">
+              {/* Mobile Theme Switcher */}
+              <ThemeSwitcher isMobile={true} />
+
               <Link 
                 to="/" 
                 onClick={() => setMobileMenuOpen(false)}
@@ -322,12 +403,47 @@ export default function Navbar({ onSearchTrigger }) {
                 Shop All Flowers
               </Link>
               <Link 
-                to="/shop/bouquets" 
+                to="/artificial-flowers" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm font-semibold uppercase tracking-wider text-charcoal"
+                className="flex items-center justify-between text-sm font-semibold uppercase tracking-wider text-charcoal bg-amber-50/70 border border-amber-200/70 px-3 py-2 rounded-sm text-amber-950"
               >
-                Hand-Tied Bouquets
+                <span>🌸 Artificial & Silk Flowers</span>
+                <span className="text-[9px] bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded-full font-bold">New</span>
               </Link>
+              
+              {/* Mobile Event Planning Group */}
+              <div className="pt-2 pb-2 border-y border-stone-line/50 space-y-2">
+                <span className="text-[10px] uppercase font-bold text-botanical tracking-widest block">Event Planning Divisions</span>
+                <Link 
+                  to="/events/weddings" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-xs text-charcoal pl-2 hover:text-botanical"
+                >
+                  💍 Weddings & Nuptials
+                </Link>
+                <Link 
+                  to="/events/birthdays" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-xs text-charcoal pl-2 hover:text-botanical"
+                >
+                  🎂 Birthday & Family Celebrations
+                </Link>
+                <Link 
+                  to="/events/corporate" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-xs text-charcoal pl-2 hover:text-botanical"
+                >
+                  🏢 Corporate & Grand Openings
+                </Link>
+                <Link 
+                  to="/events/festivals" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-xs text-charcoal pl-2 hover:text-botanical"
+                >
+                  🎪 Community & Festivals
+                </Link>
+              </div>
+
               <Link 
                 to="/corporate" 
                 onClick={() => setMobileMenuOpen(false)}
@@ -353,11 +469,11 @@ export default function Navbar({ onSearchTrigger }) {
 
             <div className="mt-auto pt-6 border-t border-stone-line">
               <Link
-                to="/shop/all"
+                to="/events"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center rounded-full py-3 text-sm bg-black text-white block font-medium"
               >
-                Explore Catalog
+                Plan An Event
               </Link>
             </div>
           </div>

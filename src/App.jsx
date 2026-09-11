@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import CartDrawer from './components/CartDrawer';
 import SearchModal from './components/SearchModal';
@@ -15,6 +16,9 @@ import CorporatePage from './pages/CorporatePage';
 import ContactPage from './pages/ContactPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import NotFound from './pages/NotFound';
+import EventCategoryPage from './pages/EventCategoryPage';
+import EventsHubPage from './pages/EventsHubPage';
+import ArtificialFlowersPage from './pages/ArtificialFlowersPage';
 
 // Scroll to top helper on route change
 function ScrollToTop() {
@@ -47,7 +51,7 @@ function MainApp() {
       {/* Header and announcements */}
       <Navbar onSearchTrigger={() => setSearchOpen(true)} />
 
-      {/* Main Pages Container: Full width for full-bleed hero, wrapped containers for inner pages */}
+      {/* Main Pages Container */}
       <main className="flex-grow w-full">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -55,10 +59,24 @@ function MainApp() {
           <Route path="/shop/:category" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><CatalogPage /></div>} />
           <Route path="/occasion/:type" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><OccasionCatalogPage /></div>} />
           <Route path="/month/:month" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><CatalogPage /></div>} />
+          
+          {/* Artificial & Silk Flowers */}
+          <Route path="/artificial-flowers" element={<ArtificialFlowersPage />} />
+          <Route path="/shop/artificial-flowers" element={<ArtificialFlowersPage />} />
+          <Route path="/cosmetic-flowers" element={<ArtificialFlowersPage />} />
+          <Route path="/shop/cosmetic-flowers" element={<ArtificialFlowersPage />} />
+          
+          {/* Corporate Gifts */}
           <Route path="/corporate" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><CorporatePage /></div>} />
           <Route path="/corporate-gifts" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><CorporatePage /></div>} />
+          
+          {/* Event Planning Routes */}
+          <Route path="/events" element={<EventsHubPage />} />
+          <Route path="/events/:category" element={<EventCategoryPage />} />
+          
           <Route path="/contact" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><ContactPage /></div>} />
           <Route path="/product/:id" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><ProductDetailPage /></div>} />
+          
           {/* Fallback route */}
           <Route path="*" element={<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><NotFound /></div>} />
         </Routes>
@@ -76,10 +94,12 @@ function MainApp() {
 
 export default function App() {
   return (
-    <CartProvider>
-      <Router>
-        <MainApp />
-      </Router>
-    </CartProvider>
+    <ThemeProvider>
+      <CartProvider>
+        <Router>
+          <MainApp />
+        </Router>
+      </CartProvider>
+    </ThemeProvider>
   );
 }

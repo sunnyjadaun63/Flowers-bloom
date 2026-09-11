@@ -737,5 +737,223 @@ export const products = [
     ],
     rating: 4.8,
     inStock: true
+  },
+  {
+    id: "cosm-001",
+    name: "The Celestial Artificial Rose in Glass Dome",
+    price: 115,
+    category: "artificial-flowers",
+    isBestSeller: true,
+    isNewArrival: true,
+    occasion: ["Romance and Valentine’s Day", "Anniversary", "Birthday", "Corporate Gift"],
+    month: "June",
+    color: "red",
+    subCategory: "preserved-glass",
+    material: "Artisanal Preserved Silk Rose & Borosilicate Glass Cloche",
+    lifespan: "3 to 5 Years",
+    images: [
+      "/images/artificial/preserved-rose-dome.jpg",
+      "/images/artificial/preserved-rose-dome-detail.jpg",
+      "/images/artificial/preserved-rose-dome-closeup.jpg"
+    ],
+    description: "An iconic symbol of eternal beauty. High-end artificial preserved crimson rose enclosed under a clear glass dome with delicate warm fairy lights and a solid wooden base. Zero water or sunlight needed.",
+    stemCount: 1,
+    careInstructions: [
+      "100% Maintenance-free: Never add water.",
+      "Keep away from direct heat sources and high humidity.",
+      "Gently wipe outer glass cloche with a microfiber cloth."
+    ],
+    rating: 5.0,
+    inStock: true
+  },
+  {
+    id: "cosm-002",
+    name: "Artificial Velvet Blush Silk Peony Ensemble",
+    price: 98,
+    category: "artificial-flowers",
+    isBestSeller: true,
+    isNewArrival: false,
+    occasion: ["Mother’s Day", "Birthday", "Housewarming", "Thank You"],
+    month: "May",
+    color: "pink",
+    subCategory: "luxury-silk",
+    material: "Real-Touch Japanese Silk & Fluted Ceramic Vase",
+    lifespan: "Everlasting (5+ Years)",
+    images: [
+      "/images/artificial/silk-peony-vase.jpg",
+      "/images/artificial/silk-peony-vase-detail.jpg",
+      "/images/artificial/silk-peony-vase-closeup.jpg"
+    ],
+    description: "Handcrafted real-touch artificial silk peonies with lush layered petals, delicate eucalyptus sprigs, and faux water resin in a fluted ceramic vase. Looks and feels like fresh blooms.",
+    stemCount: 16,
+    careInstructions: [
+      "Dust lightly with a soft brush or cool hairdryer setting.",
+      "No water required; synthetic water base is permanently set.",
+      "Safe for allergen-free spaces, offices, and bedrooms."
+    ],
+    rating: 4.9,
+    inStock: true
+  },
+  {
+    id: "cosm-003",
+    name: "The 24K Gold-Dipped Artificial Keepsake Rose",
+    price: 145,
+    category: "artificial-flowers",
+    isBestSeller: true,
+    isNewArrival: false,
+    occasion: ["Anniversary", "Romance and Valentine’s Day", "Congratulations", "Corporate Gift"],
+    month: "February",
+    color: "yellow",
+    subCategory: "metallic-dipped",
+    material: "Handcrafted Metallic Gold Leaf Dipped Rose",
+    lifespan: "Lifetime Keepsake",
+    images: [
+      "/images/artificial/gold-dipped-rose.jpg",
+      "/images/artificial/gold-dipped-rose-detail.jpg",
+      "/images/artificial/gold-dipped-rose-closeup.jpg"
+    ],
+    description: "An everlasting artificial ornamental rose finished in dazzling 24K gold metallic trim and luster lacquer. Comes housed in a luxury magnetic velvet presentation case.",
+    stemCount: 1,
+    careInstructions: [
+      "Keep inside display case or on dedicated stand.",
+      "Polish gold stem gently with jewelry polishing cloth."
+    ],
+    rating: 5.0,
+    inStock: true
+  },
+  {
+    id: "cosm-004",
+    name: "Noir Grand Infinity Artificial Rose Box",
+    price: 180,
+    category: "artificial-flowers",
+    isBestSeller: false,
+    isNewArrival: true,
+    occasion: ["Anniversary", "Romance and Valentine’s Day", "Corporate Gift"],
+    month: "October",
+    color: "white",
+    subCategory: "infinity-box",
+    material: "16 Artificial Forever Silk Roses in Velvet Hat Box",
+    lifespan: "3+ Years",
+    images: [
+      "/images/artificial/infinity-rose-box.jpg",
+      "/images/artificial/infinity-rose-box-detail.jpg",
+      "/images/artificial/infinity-rose-box-closeup.jpg"
+    ],
+    description: "Sixteen pristine white & cream artificial roses symmetrically arranged in our Parisian velvet hat box. Makes an opulent, long-lasting table centerpiece.",
+    stemCount: 16,
+    careInstructions: [
+      "Do not water or remove blooms from the box.",
+      "Keep in room temperature away from direct solar glare."
+    ],
+    rating: 4.9,
+    inStock: true
+  },
+  {
+    id: "cosm-005",
+    name: "Artisanal Silk White Phalaenopsis Orchid Pot",
+    price: 120,
+    category: "artificial-flowers",
+    isBestSeller: false,
+    isNewArrival: true,
+    occasion: ["Housewarming", "Corporate Gift", "Thank You", "Congratulations"],
+    month: "March",
+    color: "white",
+    subCategory: "luxury-silk",
+    material: "Real-Touch Silk, Synthetic Aerial Roots & Ceramic Pot",
+    lifespan: "Everlasting (5+ Years)",
+    images: [
+      "/images/artificial/silk-orchid-planter.jpg",
+      "/images/artificial/silk-orchid-planter-detail.jpg",
+      "/images/artificial/silk-orchid-planter-closeup.jpg"
+    ],
+    description: "Triple-stemmed artificial white orchid with lifelike buds, bendable wired stems, faux moss, and a minimalist stone planter pot. Ideal for home and executive desks.",
+    stemCount: 18,
+    careInstructions: [
+      "Stems are bendable to allow custom arrangement shaping.",
+      "Wipe clean with a dry cloth or duster."
+    ],
+    rating: 4.9,
+    inStock: true
+  },
+  {
+    id: "cosm-006",
+    name: "Bohemian Artificial Pampas & Dried Floral Vase",
+    price: 85,
+    category: "artificial-flowers",
+    isBestSeller: true,
+    isNewArrival: false,
+    occasion: ["Housewarming", "Birthday", "Just Because", "Congratulations"],
+    month: "September",
+    color: "yellow",
+    subCategory: "dried-preserved",
+    material: "Fluffy Faux Pampas & Preserved Dried Botanicals",
+    lifespan: "3 to 5 Years",
+    images: [
+      "/images/artificial/dried-pampas-vase.jpg",
+      "/images/artificial/dried-pampas-vase-detail.jpg",
+      "/images/artificial/dried-pampas-vase-closeup.jpg"
+    ],
+    description: "Sculptural boho decor featuring high-density artificial beige pampas plumes, dried seed heads, and bleached botanical grasses in a ceramic vase.",
+    stemCount: 22,
+    careInstructions: [
+      "Keep completely dry: do not place in water.",
+      "Fluff gently by hand when unpacking."
+    ],
+    rating: 4.8,
+    inStock: true
+  },
+  {
+    id: "cosm-007",
+    name: "Real-Touch Artificial White Calla Lily Trio",
+    price: 92,
+    category: "artificial-flowers",
+    isBestSeller: false,
+    isNewArrival: true,
+    occasion: ["Sympathy and Funeral", "Wedding", "Housewarming", "Just Because"],
+    month: "April",
+    color: "white",
+    subCategory: "luxury-silk",
+    material: "Moisture-Touch Silicone & Modern Glass Cylinder",
+    lifespan: "Everlasting (5+ Years)",
+    images: [
+      "/images/artificial/scented-calla-lily.jpg",
+      "/images/artificial/scented-calla-lily-detail.jpg",
+      "/images/artificial/scented-calla-lily-closeup.jpg"
+    ],
+    description: "Engineered with moisture-touch silicone petals that mimic fresh dew-kissed calla lilies. Presented in a clean glass vase with acrylic water.",
+    stemCount: 12,
+    careInstructions: [
+      "Wipe petals with a slightly damp cloth to refresh the dewy look.",
+      "Store away from direct high heat radiators."
+    ],
+    rating: 4.8,
+    inStock: true
+  },
+  {
+    id: "cosm-008",
+    name: "The Provence Faux Lavender & Botanical Wrap",
+    price: 79,
+    category: "artificial-flowers",
+    isBestSeller: false,
+    isNewArrival: true,
+    occasion: ["Get Well", "Thank You", "Birthday", "Mother’s Day"],
+    month: "July",
+    color: "purple",
+    subCategory: "dried-preserved",
+    material: "Silk French Lavender & Preserved Eucalyptus Bundle",
+    lifespan: "2 to 4 Years",
+    images: [
+      "/images/artificial/provence-lavender-wrap.jpg",
+      "/images/artificial/provence-lavender-wrap-detail.jpg",
+      "/images/artificial/provence-lavender-wrap-closeup.jpg"
+    ],
+    description: "An everlasting rustic bouquet combining vivid purple artificial silk lavender sprigs, dusty blue faux hydrangeas, and faux eucalyptus wrapped in kraft paper with twine.",
+    stemCount: 28,
+    careInstructions: [
+      "Never requires watering or trimming.",
+      "Can be displayed in any vase or hung as a rustic wall accent."
+    ],
+    rating: 4.9,
+    inStock: true
   }
 ];

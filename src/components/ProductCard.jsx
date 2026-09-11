@@ -115,8 +115,8 @@ export default function ProductCard({ product }) {
             <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500 mr-1" />
             <span>{product.rating.toFixed(1)}</span>
           </div>
-          <span className="font-sans text-sm font-bold text-charcoal">
-            ${product.price}
+          <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-botanical bg-stone-100 px-2.5 py-1 rounded-full">
+            Coming Soon
           </span>
         </div>
       </div>

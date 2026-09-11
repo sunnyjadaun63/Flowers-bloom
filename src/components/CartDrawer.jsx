@@ -95,25 +95,21 @@ export default function CartDrawer() {
               <div className="flex justify-between items-center text-xs">
                 <span className="font-medium text-charcoal flex items-center">
                   <Sparkles className="w-3.5 h-3.5 text-terracotta mr-1.5" />
-                  {subtotal >= shippingThreshold 
-                    ? "You've unlocked Complimentary Shipping!" 
-                    : `Add $${leftForFreeShipping.toFixed(2)} more for Complimentary Shipping`}
+                  Complimentary White-Glove Hand Delivery On All Orders
                 </span>
-                <span className="font-bold text-charcoal">{Math.round(progressPercent)}%</span>
+                <span className="font-bold text-botanical">FREE</span>
               </div>
               <div className="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden">
                 <div 
                   className="bg-botanical h-full transition-all duration-500 ease-out" 
-                  style={{ width: `${progressPercent}%` }}
+                  style={{ width: `100%` }}
                 />
               </div>
 
               {/* Complimentary Vase tracker */}
               <div className="text-[11px] font-sans text-warm-neutral flex justify-between items-center pt-1">
-                <span>Vase Promo (Vase free on orders $85+)</span>
-                <span className={`font-semibold ${qualifiesForComplimentaryVase ? 'text-botanical' : 'text-terracotta'}`}>
-                  {qualifiesForComplimentaryVase ? 'Unlocked!' : `$${Math.max(0, 85 - subtotal).toFixed(2)} to unlock`}
-                </span>
+                <span>Vase Promo</span>
+                <span className="font-semibold text-botanical">Complimentary with every arrangement</span>
               </div>
             </div>
 
@@ -169,7 +165,7 @@ export default function CartDrawer() {
                             <span className="font-semibold block uppercase tracking-wider text-[8px] mb-0.5">Add-ons:</span>
                             <ul className="list-disc pl-3.5 space-y-0.5">
                               {item.selectedUpsells.map((up, uIdx) => (
-                                <li key={uIdx}>{up.name} (+${up.price})</li>
+                                <li key={uIdx}>{up.name} (+Coming Soon)</li>
                               ))}
                             </ul>
                           </div>
@@ -202,8 +198,8 @@ export default function CartDrawer() {
                             </button>
                           </div>
 
-                          <span className="font-sans text-xs font-bold text-charcoal">
-                            ${(itemPrice * item.quantity).toFixed(2)}
+                          <span className="font-sans text-[11px] font-bold text-botanical uppercase tracking-wider bg-stone-100 px-2 py-0.5 rounded-full">
+                            Coming Soon
                           </span>
                         </div>
                       </div>
@@ -239,7 +235,7 @@ export default function CartDrawer() {
               {/* Subtotal */}
               <div className="flex justify-between items-baseline">
                 <span className="font-serif text-sm font-semibold text-charcoal">Subtotal</span>
-                <span className="font-sans text-xl font-bold text-charcoal">${subtotal.toFixed(2)}</span>
+                <span className="font-sans text-sm font-bold text-botanical uppercase tracking-wider bg-stone-100 px-2.5 py-1 rounded-full">Coming Soon</span>
               </div>
               <p className="font-sans text-[10px] text-warm-neutral leading-relaxed">
                 Taxes and complimentary local hand-delivery calculated during checkout. Order before 1:00 PM in recipient's time zone for same-day delivery.
@@ -278,12 +274,12 @@ export default function CartDrawer() {
                 <div>
                   <h3 className="font-serif text-2xl text-charcoal font-semibold">Order Placed Successfully!</h3>
                   <p className="font-sans text-xs text-warm-neutral mt-2 max-w-sm mx-auto">
-                    Aura Blooms has received your order. We are coordination with our sustainable partner farm to prepare your premium stems.
+                    Handal Flowers & Events has received your order. We are coordination with our sustainable partner farm to prepare your premium stems.
                   </p>
                 </div>
                 <div className="bg-white border border-stone-line/50 p-4 rounded-sm text-left max-w-xs mx-auto text-xs space-y-1">
                   <p className="font-semibold uppercase tracking-wider text-[9px] text-warm-neutral mb-2">Simulated Order Details:</p>
-                  <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)}</p>
+                  <p><strong>Subtotal:</strong> <span className="text-botanical font-bold">Coming Soon</span></p>
                   <p><strong>Delivery ZIP:</strong> {zipCode || "10001 (Default)"}</p>
                   <p><strong>Status:</strong> Ready for Hand-Delivery</p>
                 </div>
@@ -391,7 +387,7 @@ export default function CartDrawer() {
                   <div className="bg-stone-50 border border-stone-line p-4 rounded-sm text-xs space-y-2 text-charcoal mt-4">
                     <div className="flex justify-between">
                       <span>Order Subtotal:</span>
-                      <span className="font-semibold">${subtotal.toFixed(2)}</span>
+                      <span className="font-bold text-botanical uppercase tracking-wider text-[11px]">Coming Soon</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Delivery Service:</span>
@@ -399,7 +395,7 @@ export default function CartDrawer() {
                     </div>
                     <div className="flex justify-between border-t border-stone-line/50 pt-2 text-sm">
                       <span className="font-semibold">Grand Total:</span>
-                      <span className="font-bold">${subtotal.toFixed(2)}</span>
+                      <span className="font-bold text-botanical uppercase tracking-wider text-xs">Coming Soon</span>
                     </div>
                   </div>
 

@@ -7,30 +7,158 @@
   --font-instrument: 'Instrument Serif', serif;
   --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
   
+  --color-canvas: var(--color-canvas);
+  --color-card: var(--color-card);
+  --color-stone-line: var(--color-stone-line);
+  --color-charcoal: var(--color-charcoal);
+  --color-warm-neutral: var(--color-warm-neutral);
+  --color-botanical: var(--color-botanical);
+  --color-terracotta: var(--color-terracotta);
+}
+
+/* =========================================
+   1. Theme Variable Definitions
+   ========================================= */
+
+:root,
+[data-theme="light"] {
   --color-canvas: #FAFAF9;
   --color-card: #FFFFFF;
+  --color-surface-stone-50: #F5F5F4;
+  --color-surface-stone-100: #E7E5E4;
   --color-stone-line: #E7E5E4;
   --color-charcoal: #1C1917;
   --color-warm-neutral: #78716C;
   --color-botanical: #1B3B2B;
   --color-terracotta: #C86D51;
+  --color-input-bg: #FFFFFF;
+  --color-nav-bg: #FFFFFF;
+  --color-dropdown-bg: #FFFFFF;
 }
 
+[data-theme="dark"] {
+  --color-canvas: #101311;
+  --color-card: #191E1B;
+  --color-surface-stone-50: #212724;
+  --color-surface-stone-100: #2A332F;
+  --color-stone-line: #35403B;
+  --color-charcoal: #F5F5F4;
+  --color-warm-neutral: #A3A8A5;
+  --color-botanical: #2E7D52;
+  --color-terracotta: #FB7185;
+  --color-input-bg: #1F2522;
+  --color-nav-bg: #141816;
+  --color-dropdown-bg: #1A1F1D;
+}
+
+[data-theme="emerald"] {
+  --color-canvas: #08170F;
+  --color-card: #0E271B;
+  --color-surface-stone-50: #133626;
+  --color-surface-stone-100: #1A4632;
+  --color-stone-line: #24583E;
+  --color-charcoal: #F1FAF5;
+  --color-warm-neutral: #A1C6B4;
+  --color-botanical: #1E6B47;
+  --color-terracotta: #F4A261;
+  --color-input-bg: #113022;
+  --color-nav-bg: #0A1E14;
+  --color-dropdown-bg: #0F2A1D;
+}
+
+/* =========================================
+   2. Global Baseline & Dark/Emerald Adapters
+   ========================================= */
+
 body {
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--color-canvas);
+  color: var(--color-charcoal);
   font-family: var(--font-sans);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Ensure seamless adaptivity for dark & emerald themes */
+[data-theme="dark"] header {
+  background-color: rgba(20, 24, 22, 0.95) !important;
+}
+
+[data-theme="emerald"] header {
+  background-color: rgba(10, 30, 20, 0.95) !important;
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="emerald"] .bg-white {
+  background-color: var(--color-card) !important;
+}
+
+[data-theme="dark"] .bg-stone-50,
+[data-theme="emerald"] .bg-stone-50 {
+  background-color: var(--color-surface-stone-50) !important;
+}
+
+[data-theme="dark"] .bg-stone-100,
+[data-theme="emerald"] .bg-stone-100 {
+  background-color: var(--color-surface-stone-100) !important;
+}
+
+[data-theme="dark"] .bg-stone-50\/50,
+[data-theme="emerald"] .bg-stone-50\/50 {
+  background-color: rgba(33, 39, 36, 0.5) !important;
+}
+
+[data-theme="dark"] .border-stone-line,
+[data-theme="emerald"] .border-stone-line {
+  border-color: var(--color-stone-line) !important;
+}
+
+[data-theme="dark"] .text-charcoal,
+[data-theme="emerald"] .text-charcoal,
+[data-theme="dark"] .text-black,
+[data-theme="emerald"] .text-black {
+  color: var(--color-charcoal) !important;
+}
+
+[data-theme="dark"] .text-warm-neutral,
+[data-theme="emerald"] .text-warm-neutral {
+  color: var(--color-warm-neutral) !important;
+}
+
+[data-theme="dark"] .hover\:text-black:hover,
+[data-theme="emerald"] .hover\:text-black:hover {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea,
+[data-theme="emerald"] input,
+[data-theme="emerald"] select,
+[data-theme="emerald"] textarea {
+  background-color: var(--color-input-bg) !important;
+  color: var(--color-charcoal) !important;
+  border-color: var(--color-stone-line) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+[data-theme="emerald"] input::placeholder,
+[data-theme="emerald"] textarea::placeholder {
+  color: var(--color-warm-neutral) !important;
+  opacity: 0.7;
 }
 
 .font-instrument {
   font-family: 'Instrument Serif', serif;
 }
 
-/* Animations */
+/* =========================================
+   3. Animations & Scrollbar
+   ========================================= */
+
 @keyframes fadeRise {
   0% {
     opacity: 0;

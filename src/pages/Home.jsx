@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import { SideRibbons, RibbonColumnCard } from '../components/DecorativeRibbon';
 import { Sparkles, ArrowRight, ShieldCheck, Truck, Gift, Globe } from 'lucide-react';
 
 const categories = [
@@ -38,88 +39,40 @@ const months = [
 
 export default function Home() {
   const navigate = useNavigate();
-  const videoRef = useRef(null);
-  const [videoOpacity, setVideoOpacity] = useState(0);
-
-  // Custom Fade-in / Fade-out loop logic using requestAnimationFrame
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let animationFrameId;
-
-    const checkTimeAndFade = () => {
-      if (video.duration && !isNaN(video.duration)) {
-        const currentTime = video.currentTime;
-        const duration = video.duration;
-        const fadeDuration = 0.5; // 0.5s fade
-
-        if (currentTime < fadeDuration) {
-          // Fade in over 0.5s at start (opacity 0 to 1)
-          setVideoOpacity(currentTime / fadeDuration);
-        } else if (currentTime > duration - fadeDuration) {
-          // Fade out over 0.5s before the end (opacity 1 to 0)
-          setVideoOpacity(Math.max(0, (duration - currentTime) / fadeDuration));
-        } else {
-          setVideoOpacity(1);
-        }
-      }
-      animationFrameId = requestAnimationFrame(checkTimeAndFade);
-    };
-
-    const handleEnded = () => {
-      setVideoOpacity(0);
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.currentTime = 0;
-          videoRef.current.play().catch(() => {});
-        }
-      }, 100);
-    };
-
-    video.addEventListener('ended', handleEnded);
-    animationFrameId = requestAnimationFrame(checkTimeAndFade);
-
-    video.play().catch(() => {});
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      if (video) {
-        video.removeEventListener('ended', handleEnded);
-      }
-    };
-  }, []);
 
   // Get best sellers to display in the featured grid
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4);
 
   return (
-    <div className="space-y-24 pb-20 bg-white">
+    <div className="relative pb-20 bg-white">
+      {/* Floating Side Margin Ribbons for empty side spaces */}
+      <SideRibbons />
       
-      {/* 1. Full-Screen Full-Width Cinematic Video Hero Section */}
-      <section className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 border-b border-stone-line">
+      {/* 1. Cinematic Video Hero Section (Directly Flush Under Navbar) */}
+      <section className="relative min-h-[80vh] lg:min-h-[85vh] w-full overflow-hidden flex flex-col items-center justify-start text-center px-4 sm:px-6 lg:px-8 border-b border-stone-line pt-4 sm:pt-6 md:pt-8 pb-16 m-0">
         
-        {/* Full Space Full-Width Full-Screen Background Video Layer */}
+        {/* Full Space Full-Width Background Video Layer */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
           <video
-            ref={videoRef}
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+            autoPlay
+            loop
             muted
             playsInline
-            className="w-full h-full object-cover transition-opacity duration-300 ease-out"
-            style={{ opacity: videoOpacity }}
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+            className="w-full h-full object-cover"
           />
-          {/* Subtle Ambient Glass & Gradient Overlay to make flower gifting text pop */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/40 to-white/95 pointer-events-none" />
+          {/* Natural gentle overlay */}
+          <div className="absolute inset-0 bg-white/20 dark:bg-black/30 backdrop-blur-[0.5px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-white/90 dark:to-neutral-950/90 pointer-events-none" />
         </div>
 
-        {/* Hero Content Layer (Gifting & Flower Atelier) */}
-        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center py-20">
+        {/* Hero Content Layer */}
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center">
           
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 text-[11px] uppercase tracking-widest font-semibold text-charcoal bg-white/80 backdrop-blur-md border border-stone-line px-4 py-1.5 rounded-full mb-6 shadow-xs animate-fade-rise">
+          <div className="inline-flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest text-[#ff0074] bg-white/90 backdrop-blur-md border border-stone-line px-4 py-1.5 rounded-full mb-4 shadow-xs animate-fade-rise">
             <Sparkles className="w-3.5 h-3.5 text-[#C86D51]" />
-            <span>Artisan Floral Atelier & Luxury Gift Hampers</span>
+            <span>Beautiful Flowers. Memorable Events.</span>
           </div>
 
           {/* Headline */}
@@ -128,12 +81,12 @@ export default function Home() {
           </h1>
 
           {/* Floral & Gifting Description */}
-          <p className="text-base sm:text-lg max-w-2xl mt-6 leading-relaxed text-[#4A4A4A] animate-fade-rise-delay font-sans">
+          <p className="text-base sm:text-lg max-w-2xl mt-4 leading-relaxed text-[#4A4A4A] animate-fade-rise-delay font-sans">
             Sourcing double-petal garden roses, seasonal wildflowers, and bespoke gift hampers directly from certified sustainable farms. Hand-tied in European craft wrap with same-day white-glove delivery.
           </p>
 
           {/* Hero CTA Button Group */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 animate-fade-rise-delay-2">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-7 animate-fade-rise-delay-2">
             <Link
               to="/shop/all"
               className="rounded-full px-10 py-4 text-sm bg-[#000000] text-[#FFFFFF] hover:scale-[1.03] active:scale-95 transition-transform duration-200 font-medium inline-flex items-center justify-center shadow-lg"
@@ -150,26 +103,29 @@ export default function Home() {
           </div>
 
           {/* Trust Value Badges */}
-          <div className="pt-12 mt-12 grid grid-cols-3 gap-6 sm:gap-16 text-center max-w-2xl border-t border-stone-line/60 animate-fade-rise-delay-2">
+          <div className="pt-8 mt-8 grid grid-cols-3 gap-6 sm:gap-16 text-center max-w-2xl border-t border-stone-line/60 animate-fade-rise-delay-2">
             <div>
               <span className="block font-instrument text-2xl sm:text-3xl font-bold text-[#000000]">100%</span>
               <span className="text-[10px] uppercase tracking-wider text-[#6F6F6F] font-semibold">Eco Sustainable</span>
             </div>
             <div>
               <span className="block font-instrument text-2xl sm:text-3xl font-bold text-[#000000]">Same-Day</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#6F6F6F] font-semibold">Hand Delivery</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#6F6F6F] font-semibold">Hand-Delivered</span>
             </div>
             <div>
-              <span className="block font-instrument text-2xl sm:text-3xl font-bold text-[#000000]">7-Day</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#6F6F6F] font-semibold">Fresh Guarantee</span>
+              <span className="block font-instrument text-2xl sm:text-3xl font-bold text-[#000000]">7 Days</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#6F6F6F] font-semibold">Fresh Guaranteed</span>
             </div>
           </div>
 
         </div>
+
       </section>
 
-      {/* 2. Value Propositions */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Subsequent Page Sections Container */}
+      <div className="space-y-20 pt-16">
+        {/* 2. Value Propositions */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 px-8 bg-white border border-stone-line rounded-sm shadow-xs">
           
           <div className="flex flex-col items-center text-center p-4 space-y-3">
@@ -205,8 +161,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Category Showcase Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. Category Showcase Grid (Side-by-Side Cards with Flanking Ribbons) */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-stone-line">
           <div>
             <span className="text-[10px] uppercase tracking-widest font-semibold text-warm-neutral">Curated Collections</span>
@@ -221,42 +177,56 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.path}
-              to={`/shop/${cat.path}`}
-              className="group flex flex-col bg-white border border-stone-line rounded-sm overflow-hidden hover:border-charcoal/50 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="aspect-[4/3] bg-stone-100 overflow-hidden relative">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300" />
-              </div>
-              <div className="p-5 text-left flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-instrument text-2xl font-bold text-charcoal group-hover:opacity-80 transition-colors">
-                    {cat.name}
-                  </h3>
-                  <p className="font-sans text-xs text-warm-neutral mt-1">
-                    {cat.tagline}
-                  </p>
+        {/* Layout: Left Ribbon + 2 Cards + Right Ribbon */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch">
+          {/* Left Ribbon Card */}
+          <div className="xl:col-span-2 hidden xl:block">
+            <RibbonColumnCard type="left" />
+          </div>
+
+          {/* 2 Category Cards */}
+          <div className="xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {categories.map((cat) => (
+              <Link
+                key={cat.path}
+                to={`/shop/${cat.path}`}
+                className="group flex flex-col bg-white border border-stone-line rounded-sm overflow-hidden hover:border-charcoal/50 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="aspect-[4/3] bg-stone-100 overflow-hidden relative">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300" />
                 </div>
-                <div className="mt-4 pt-3 border-t border-stone-line/50 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-charcoal">
-                  <span>View Stems</span>
-                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                <div className="p-5 text-left flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-instrument text-2xl font-bold text-charcoal group-hover:opacity-80 transition-colors">
+                      {cat.name}
+                    </h3>
+                    <p className="font-sans text-xs text-warm-neutral mt-1">
+                      {cat.tagline}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-stone-line/50 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-charcoal">
+                    <span>View Stems</span>
+                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right Ribbon Card */}
+          <div className="xl:col-span-2 hidden xl:block">
+            <RibbonColumnCard type="right" />
+          </div>
         </div>
       </section>
 
       {/* 4. Best Sellers & Seasonal Favorites */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-stone-line">
           <div>
             <span className="text-[10px] uppercase tracking-widest font-semibold text-warm-neutral">The Atelier Signatures</span>
@@ -271,7 +241,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {bestSellers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -382,6 +352,7 @@ export default function Home() {
         </div>
       </section>
 
+      </div>
     </div>
   );
 }

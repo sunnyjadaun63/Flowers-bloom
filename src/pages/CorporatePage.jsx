@@ -303,21 +303,14 @@ export default function CorporatePage() {
           <div className="flex items-center space-x-3 w-full sm:w-auto">
             <SlidersHorizontal className="w-4 h-4 text-botanical flex-shrink-0" />
             <div className="flex items-center space-x-2 text-xs font-sans text-charcoal">
-              <span className="font-medium">Max Price:</span>
-              <span className="font-bold text-botanical">${priceRange}</span>
-              <input 
-                type="range" 
-                min="65" 
-                max="170" 
-                step="5"
-                value={priceRange} 
-                onChange={(e) => setPriceRange(Number(e.target.value))}
-                className="accent-botanical cursor-pointer w-28 sm:w-36 ml-2"
-              />
+              <span className="font-medium">Corporate Pricing:</span>
+              <span className="font-sans text-[11px] font-bold text-botanical uppercase tracking-wider bg-stone-100 px-2.5 py-0.5 rounded-full">
+                Coming Soon
+              </span>
             </div>
           </div>
 
-          {(selectedVibe !== 'all' || priceRange < 170) && (
+          {selectedVibe !== 'all' && (
             <button
               onClick={resetFilters}
               className="inline-flex items-center space-x-1 text-xs text-warm-neutral hover:text-terracotta transition-colors self-end sm:self-center"
@@ -330,7 +323,7 @@ export default function CorporatePage() {
 
         {/* Product Grid */}
         {corporateProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {corporateProducts.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -354,7 +347,7 @@ export default function CorporatePage() {
       <section className="bg-white border border-stone-line p-8 sm:p-10 rounded-sm space-y-8 shadow-xs">
         <div className="max-w-2xl space-y-2">
           <span className="text-[10px] uppercase tracking-widest font-semibold text-botanical">B2B Volume Programs</span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold">The Aura Blooms Corporate Advantage</h2>
+          <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold">The Handal Flowers & Events Corporate Advantage</h2>
           <p className="font-sans text-xs text-warm-neutral leading-relaxed">
             Partnering with us gives your organization streamlined bulk order concierge support, dedicated account design stylists, and custom embossed ribbon options.
           </p>
@@ -455,7 +448,7 @@ export default function CorporatePage() {
         </div>
 
         {/* Form area */}
-        <div className="lg:col-span-7 bg-canvas border border-stone-line p-6 sm:p-8 rounded-sm">
+        {/* <div className="lg:col-span-7 bg-canvas border border-stone-line p-6 sm:p-8 rounded-sm">
           {submitted ? (
             <div className="text-center py-12 space-y-6">
               <div className="w-16 h-16 bg-green-50 text-botanical border border-botanical rounded-full flex items-center justify-center mx-auto">
@@ -464,7 +457,7 @@ export default function CorporatePage() {
               <div>
                 <h3 className="font-serif text-xl text-charcoal font-semibold">Corporate Inquiry Received</h3>
                 <p className="font-sans text-xs text-warm-neutral mt-2 max-w-md mx-auto">
-                  Thank you for contacting our corporate gifting desk. An Aura Blooms account stylist will review your request and reach out within 24 hours with a custom proposal.
+                  Thank you for contacting our corporate gifting desk. An Handal Flowers & Events account stylist will review your request and reach out within 24 hours with a custom proposal.
                 </p>
               </div>
               <p className="text-[10px] text-warm-neutral italic animate-pulse">Refreshing inquiry form...</p>
@@ -589,7 +582,7 @@ export default function CorporatePage() {
               </button>
             </form>
           )}
-        </div>
+        </div> */}
 
       </section>
 

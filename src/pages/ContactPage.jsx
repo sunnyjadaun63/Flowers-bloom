@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Do you supply the vase shown in the photos?",
-    answer: "All bouquets are hand-tied in premium European kraft paper wrapping. We offer our signature hand-thrown glass and ceramic vases as an add-on item on the product page. Orders over $85 automatically qualify for a complimentary designer vase."
+    answer: "All bouquets are hand-tied in premium European kraft paper wrapping. We offer our signature hand-thrown glass and ceramic vases as an add-on item on the product page. Qualifying orders automatically receive a complimentary designer vase."
   },
   {
     question: "Can I customize the stems in an arrangement?",
@@ -73,8 +73,8 @@ export default function ContactPage() {
         {/* Left Column: Studio coordinates & Delivery Tracker */}
         <div className="lg:col-span-5 space-y-8">
           
-          {/* Tracking Widget */}
-          <div className="bg-white border border-stone-line p-5 rounded-sm shadow-xs space-y-4">
+       
+          {/* <div className="bg-white border border-stone-line p-5 rounded-sm shadow-xs space-y-4">
             <h3 className="font-serif text-sm font-semibold text-charcoal flex items-center">
               <Truck className="w-4 h-4 text-botanical mr-2" />
               <span>Real-Time Delivery Tracker</span>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                 </div>
                 <p><strong>Estimated Arrival:</strong> {trackingStatus.eta}</p>
                 
-                {/* Stepper tracker */}
+             
                 <div className="flex justify-between text-[8px] uppercase tracking-wider font-semibold text-warm-neutral pt-2">
                   <span className="text-botanical">1. Harvested</span>
                   <span className="text-botanical">2. Arranged</span>
@@ -117,9 +117,8 @@ export default function ContactPage() {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
 
-          {/* Coordinates details */}
           <div className="space-y-4 bg-white border border-stone-line p-5 rounded-sm shadow-xs font-sans text-xs">
             <h3 className="font-serif text-sm font-semibold text-charcoal border-b border-stone-line/50 pb-2">Studio Coordinates</h3>
             
