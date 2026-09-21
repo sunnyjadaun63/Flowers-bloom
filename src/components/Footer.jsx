@@ -130,7 +130,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-instrument text-lg font-bold tracking-tight text-charcoal">Support & Studio</h4>
             <ul className="space-y-2 font-sans text-xs text-warm-neutral">
-              {/* <li><Link to="/contact" className="hover:text-botanical transition-colors">Delivery Tracking</Link></li> */}
+              <li><Link to="/reviews" className="hover:text-botanical transition-colors font-medium text-charcoal">Client Reviews & Stories</Link></li>
               <li><Link to="/contact" className="hover:text-botanical transition-colors">Care Instructions</Link></li>
               <li><Link to="/about" className="hover:text-botanical transition-colors">Our Sourcing Heritage</Link></li>
               <li><Link to="/corporate" className="hover:text-botanical transition-colors">Corporate Gifts & B2B</Link></li>
@@ -141,7 +141,7 @@ export default function Footer() {
 
         {/* Bottom copyright */}
         <div className="border-t border-stone-line pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-warm-neutral">
-          <p>© {new Date().getFullYear()} Handal Flowers & Events Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} <a href="https://ritztekglobal.com/"> <b >Powered By Ritz Tek Global LLC.</b></a> </p>
           <div className="flex space-x-6 mt-4 sm:mt-0 font-medium">
             <a href="#privacy" className="hover:text-botanical transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-botanical transition-colors">Terms of Service</a>

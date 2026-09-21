@@ -5,6 +5,9 @@ import { useParams, useLocation } from 'react-router-dom';
 const categoryColorMap = {
   // --- 1. Shop Flowers Dropdown ---
   'all': 'green',
+  'balloon-setup': 'pink',
+  'balloon-setups': 'pink',
+  'natural-flowers': 'green',
   'best-sellers': 'yellow',
   'new-arrivals': 'pink',
   'artificial-flowers': 'maroon',
@@ -48,10 +51,16 @@ const categoryColorMap = {
   'december': 'yellow',
 
   // --- 4. Event Divisions ---
+  'events': 'green',
   'weddings': 'red',
   'birthdays': 'yellow',
   'corporate': 'green',
-  'festivals': 'pink'
+  'festivals': 'pink',
+
+  // --- 5. Other Pages ---
+  'contact': 'maroon',
+  'reviews': 'green',
+  'review': 'green'
 };
 
 const validColors = ['green', 'yellow', 'pink', 'maroon', 'red'];
@@ -62,13 +71,13 @@ const validColors = ['green', 'yellow', 'pink', 'maroon', 'red'];
  */
 export function SideRibbons() {
   return (
-    <div className="pointer-events-none select-none z-20">
+    <div className="pointer-events-none select-none z-30">
       {/* Left Margin Classic Red Ribbon */}
       <div className="hidden lg:block fixed left-1 xl:left-4 2xl:left-8 top-1/4 w-20 xl:w-28 2xl:w-36 transition-all duration-300">
         <img
           src="/images/ribbon.png"
           alt="Classic Red Silk Ribbon"
-          className="w-full h-auto object-contain drop-shadow-lg transform -rotate-3"
+          className="w-full h-auto object-contain drop-shadow-xl transform -rotate-3"
         />
       </div>
 
@@ -77,7 +86,7 @@ export function SideRibbons() {
         <img
           src="/images/ribbon2.png"
           alt="Classic Red Satin Ribbon"
-          className="w-full h-auto object-contain drop-shadow-lg transform rotate-3"
+          className="w-full h-auto object-contain drop-shadow-xl transform rotate-3"
         />
       </div>
     </div>
@@ -98,7 +107,9 @@ export function ShopPageRibbons({ category: propCategory, color: propColor }) {
   let activeKey = propCategory || paramCategory || paramType || paramMonth;
   if (!activeKey) {
     const path = location.pathname.replace(/^\//, '');
-    if (path.includes('artificial-flowers') || path.includes('cosmetic-flowers')) {
+    if (path.includes('balloon-setup') || path.includes('balloon-setups')) {
+      activeKey = 'balloon-setup';
+    } else if (path.includes('artificial-flowers') || path.includes('cosmetic-flowers')) {
       activeKey = 'artificial-flowers';
     } else if (path.startsWith('shop/')) {
       activeKey = path.replace('shop/', '');
@@ -108,6 +119,8 @@ export function ShopPageRibbons({ category: propCategory, color: propColor }) {
       activeKey = path.replace('month/', '');
     } else if (path.startsWith('events/')) {
       activeKey = path.replace('events/', '');
+    } else if (path === 'events' || path.startsWith('events')) {
+      activeKey = 'events';
     }
   }
 
@@ -140,22 +153,22 @@ export function ShopPageRibbons({ category: propCategory, color: propColor }) {
   const ribbonSrc = `/images/ribbon_${resolvedColor}.png`;
 
   return (
-    <div className="pointer-events-none select-none z-20">
+    <div className="pointer-events-none select-none z-30">
       {/* Left Side Floating Ribbon Cutout (Rotated gently to the left) */}
-      <div className="hidden xl:block fixed left-2 2xl:left-6 top-1/3 w-20 xl:w-28 2xl:w-32 opacity-90 transition-all duration-500">
+      <div className="hidden lg:block fixed left-1 xl:left-4 2xl:left-8 top-1/3 w-20 xl:w-28 2xl:w-32 opacity-95 transition-all duration-500">
         <img
           src={ribbonSrc}
           alt={`${resolvedColor} Botanical Silk Ribbon`}
-          className="w-full h-auto object-contain drop-shadow-lg transform -rotate-6 hover:rotate-0 transition-transform duration-500"
+          className="w-full h-auto object-contain drop-shadow-xl transform -rotate-6 hover:rotate-0 transition-transform duration-500"
         />
       </div>
 
       {/* Right Side Floating Ribbon Cutout (Flipped horizontally for symmetry) */}
-      <div className="hidden xl:block fixed right-2 2xl:right-6 top-1/4 w-20 xl:w-28 2xl:w-32 opacity-90 transition-all duration-500">
+      <div className="hidden lg:block fixed right-1 xl:right-4 2xl:right-8 top-1/4 w-20 xl:w-28 2xl:w-32 opacity-95 transition-all duration-500">
         <img
           src={ribbonSrc}
           alt={`${resolvedColor} Botanical Silk Ribbon`}
-          className="w-full h-auto object-contain drop-shadow-lg transform scale-x-[-1] rotate-6 hover:rotate-0 transition-transform duration-500"
+          className="w-full h-auto object-contain drop-shadow-xl transform scale-x-[-1] rotate-6 hover:rotate-0 transition-transform duration-500"
         />
       </div>
     </div>

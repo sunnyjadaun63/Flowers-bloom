@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { eventCategories } from '../data/eventsData';
+import { SideRibbons } from '../components/DecorativeRibbon';
 import { 
   Calendar, 
   Users, 
@@ -81,6 +82,8 @@ export default function EventCategoryPage() {
 
   return (
     <div className="relative pb-20 bg-white">
+      {/* Decorative Side Ribbons */}
+      <SideRibbons />
       
       {/* 1. Category Hero Banner (Flush directly under Navbar) */}
       <section className="relative min-h-[60vh] lg:min-h-[70vh] w-full overflow-hidden flex items-center justify-center text-center px-6 bg-stone-900 border-b border-stone-line m-0">

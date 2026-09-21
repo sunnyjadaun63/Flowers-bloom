@@ -26,7 +26,9 @@ const monthsList = [
 ];
 
 const shopCategories = [
-  { name: "All Flowers", path: "all" },
+  { name: "All Flowers & Setups", path: "all" },
+  { name: "Balloon Setup", path: "balloon-setup", isDirect: true, badge: "Setups" },
+  { name: "Natural Flowers", path: "natural-flowers", isDirect: true, badge: "Fresh Stems" },
   { name: "Best Sellers", path: "best-sellers" },
   { name: "New Arrivals", path: "new-arrivals" },
   { name: "Artificial Flowers", path: "artificial-flowers", isDirect: true, badge: "Silk & Faux" },
@@ -146,12 +148,29 @@ export default function Navbar({ onSearchTrigger }) {
               </button> */}
             </div>
 
-            {/* Middle: Brand Logo (Centered) */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-              <Link to="/" className="flex items-center group">
-                <span className="font-instrument text-2xl sm:text-3xl lg:text-4xl tracking-tight font-normal text-[#ff0074] group-hover:opacity-80 transition-opacity duration-200">
-                 <b>Handal Flowers & Events</b> <sup className="text-xs ml-0.5 font-sans">®</sup>
+            {/* Middle: Brand Logo (Centered with Peony Flowers Left & Right) */}
+            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-10 pointer-events-auto">
+              <Link to="/" className="relative flex items-center justify-center group px-4 sm:px-8 py-1">
+                {/* Left Peony Flower */}
+                <img
+                  src="/images/peony_left.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -left-6 sm:-left-9 md:-left-12 top-1/2 -translate-y-1/2 h-8 sm:h-11 md:h-13 w-auto object-contain pointer-events-none select-none drop-shadow-xs group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300"
+                />
+
+                {/* Brand Title Text */}
+                <span className="relative z-10 font-instrument text-2xl sm:text-3xl lg:text-4xl tracking-tight font-normal text-[#ff0074] group-hover:opacity-90 transition-opacity duration-200 whitespace-nowrap px-1">
+                  <b>Handal Flowers & Events</b> <sup className="text-xs ml-0.5 font-sans">®</sup>
                 </span>
+
+                {/* Right Peony Flower */}
+                <img
+                  src="/images/peony_right.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -right-6 sm:-right-9 md:-right-12 top-1/2 -translate-y-1/2 h-8 sm:h-11 md:h-13 w-auto object-contain pointer-events-none select-none drop-shadow-xs group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                />
               </Link>
             </div>
 
@@ -181,7 +200,8 @@ export default function Navbar({ onSearchTrigger }) {
                 )}
               </Link>
 
-              <button 
+              {/* Cart Drawer Trigger (Commented out per request) */}
+              {/* <button 
                 onClick={() => setCartDrawerOpen(true)}
                 className="p-2 text-charcoal hover:text-black transition-colors focus:outline-none relative"
                 aria-label="Open Cart"
@@ -192,7 +212,7 @@ export default function Navbar({ onSearchTrigger }) {
                     {totalCartItems}
                   </span>
                 )}
-              </button>
+              </button> */}
 
               <Link
                 to="/events"
@@ -208,13 +228,13 @@ export default function Navbar({ onSearchTrigger }) {
           <div className="hidden md:flex items-center justify-between w-full h-12">
             <nav className="w-full flex items-center justify-between font-sans text-[11px] tracking-widest uppercase font-semibold text-charcoal">
               
-              {/* Shop Flowers Dropdown */}
+              {/* Shop Flower and Setup Dropdown */}
               <div className="relative group py-3">
                 <button 
                   onClick={() => navigate('/shop/all')}
                   className="flex items-center space-x-1 hover:text-black transition-colors duration-200"
                 >
-                  <span>Shop Flowers</span>
+                  <span>Shop Flower and Setup</span>
                   <ChevronDown className="w-3.5 h-3.5 text-warm-neutral transition-transform duration-200 group-hover:rotate-180" />
                 </button>
                 <div className="absolute top-full left-0 bg-white border border-stone-line py-3 px-4 w-60 rounded-sm shadow-xl scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 ease-out z-50">
@@ -373,9 +393,23 @@ export default function Navbar({ onSearchTrigger }) {
           />
           <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white border-r border-stone-line shadow-2xl p-6 overflow-y-auto">
             <div className="flex items-center justify-between pb-6 border-b border-stone-line">
-              <span className="font-instrument text-2xl tracking-tight text-[#ff0074]">
-           <b>Handal Flowers & Events</b>     <sup className="text-xs ml-0.5">®</sup>
-              </span>
+              <div className="relative flex items-center py-1 px-4">
+                <img
+                  src="/images/peony_left.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -left-2 top-1/2 -translate-y-1/2 h-6 w-auto object-contain pointer-events-none select-none opacity-90"
+                />
+                <span className="relative z-10 font-instrument text-xl tracking-tight text-[#ff0074]">
+                  <b>Handal Flowers & Events</b> <sup className="text-[10px] ml-0.5 font-sans">®</sup>
+                </span>
+                <img
+                  src="/images/peony_right.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -right-2 top-1/2 -translate-y-1/2 h-6 w-auto object-contain pointer-events-none select-none opacity-90"
+                />
+              </div>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-1 text-warm-neutral hover:text-charcoal"
@@ -400,7 +434,23 @@ export default function Navbar({ onSearchTrigger }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-sm font-semibold uppercase tracking-wider text-charcoal"
               >
-                Shop All Flowers
+                Shop Flower and Setup
+              </Link>
+              <Link 
+                to="/balloon-setup" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between text-sm font-semibold uppercase tracking-wider text-charcoal bg-pink-50/70 border border-pink-200/70 px-3 py-2 rounded-sm text-pink-950"
+              >
+                <span>🎈 Balloon Setup</span>
+                <span className="text-[9px] bg-pink-200 text-pink-900 px-1.5 py-0.5 rounded-full font-bold">New</span>
+              </Link>
+              <Link 
+                to="/natural-flowers" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between text-sm font-semibold uppercase tracking-wider text-charcoal bg-emerald-50/70 border border-emerald-200/70 px-3 py-2 rounded-sm text-emerald-950"
+              >
+                <span>🌿 Natural & Fresh Flowers</span>
+                <span className="text-[9px] bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded-full font-bold">Organic</span>
               </Link>
               <Link 
                 to="/artificial-flowers" 
@@ -459,6 +509,13 @@ export default function Navbar({ onSearchTrigger }) {
                 Our Story & Philosophy
               </Link>
               <Link 
+                to="/reviews" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-sm font-semibold uppercase tracking-wider text-charcoal"
+              >
+                Client Reviews
+              </Link>
+              <Link 
                 to="/contact" 
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-sm font-semibold uppercase tracking-wider text-charcoal"
@@ -480,8 +537,8 @@ export default function Navbar({ onSearchTrigger }) {
         </div>
       )}
 
-      {/* ZIP Code Modal */}
-      {zipModalOpen && (
+      {/* ZIP Code Modal (Commented out per request) */}
+      {/* {zipModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/40 backdrop-blur-xs">
           <div className="bg-white border border-stone-line max-w-sm w-full p-6 rounded-sm shadow-xl relative">
             <button 
@@ -517,7 +574,7 @@ export default function Navbar({ onSearchTrigger }) {
             </form>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }

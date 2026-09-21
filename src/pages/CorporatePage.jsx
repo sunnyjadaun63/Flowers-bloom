@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import { ShopPageRibbons } from '../components/DecorativeRibbon';
 import { 
   ArrowLeft, 
   Sparkles, 
@@ -141,6 +142,8 @@ export default function CorporatePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-left space-y-12 animate-in fade-in duration-300">
+      {/* Decorative Ribbon Cutouts */}
+      <ShopPageRibbons category="corporate" color="green" />
       
       {/* 1. Breadcrumb Back Link */}
       <Link 

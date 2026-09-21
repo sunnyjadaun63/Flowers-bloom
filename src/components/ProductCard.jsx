@@ -78,8 +78,8 @@ export default function ProductCard({ product }) {
           />
         </button>
 
-        {/* Quick Add Overlay Button (Bottom Hover) */}
-        {product.inStock && (
+        {/* Quick Add Overlay Button (Commented out per request) */}
+        {/* {product.inStock && (
           <div className="absolute inset-x-0 bottom-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-10">
             <button
               onClick={handleQuickAdd}
@@ -89,7 +89,7 @@ export default function ProductCard({ product }) {
               <span>Quick Add to Cart</span>
             </button>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* Product Content Info Area */}

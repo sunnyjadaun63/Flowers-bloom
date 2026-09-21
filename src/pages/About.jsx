@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ShopPageRibbons } from '../components/DecorativeRibbon';
 import { ArrowLeft, Sparkles, Sprout, Heart, Eye, Trees } from 'lucide-react';
 
 const pillars = [
@@ -45,7 +46,9 @@ const timelineSteps = [
 
 export default function About() {
   return (
-    <div className="space-y-20 pb-20 animate-in fade-in duration-300 text-left">
+    <div className="relative pb-24 bg-white text-left space-y-24">
+      {/* Decorative Ribbon Cutouts */}
+      <ShopPageRibbons category="about" color="maroon" />
       
       {/* 1. Header Navigation & Editorial Hero */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">

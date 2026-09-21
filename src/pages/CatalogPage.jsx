@@ -6,8 +6,9 @@ import { ShopPageRibbons } from '../components/DecorativeRibbon';
 import { useCart } from '../context/CartContext';
 import { ArrowLeft, SlidersHorizontal, Grid, RotateCcw } from 'lucide-react';
 
-export default function CatalogPage() {
-  const { category, type, month } = useParams();
+export default function CatalogPage({ categoryProp }) {
+  const { category: paramCategory, type, month } = useParams();
+  const category = categoryProp || paramCategory;
   const [searchParams] = useSearchParams();
   const { wishlist } = useCart();
 
@@ -81,7 +82,7 @@ export default function CatalogPage() {
     if (product.stemCount < minStems) return false;
 
     return true;
-  });
+  }).sort((a, b) => (b.isNewArrival ? 1 : 0) - (a.isNewArrival ? 1 : 0));
 
   const resetFilters = () => {
     setPriceRange(160);

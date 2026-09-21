@@ -232,7 +232,7 @@ export default function ProductDetailPage() {
           </div>
 
           {/* ZIP Code Checker Area */}
-          <div className="bg-white border border-stone-line p-4 rounded-sm space-y-3">
+          {/* <div className="bg-white border border-stone-line p-4 rounded-sm space-y-3">
             <h4 className="font-serif text-xs font-bold text-charcoal flex items-center">
               <MapPin className="w-4 h-4 text-botanical mr-1.5" />
               <span>Verify Local Delivery Availability</span>
@@ -270,10 +270,10 @@ export default function ProductDetailPage() {
                 <span>{zipVerifiedMsg}</span>
               </p>
             )}
-          </div>
+          </div> */}
 
-          {/* Upsells checkcards */}
-          <div className="space-y-3">
+          {/* Upsells checkcards (Commented out per request) */}
+          {/* <div className="space-y-3">
             <span className="block text-[10px] uppercase tracking-wider font-semibold text-warm-neutral">
               Upsell Enhancements (Optional)
             </span>
@@ -288,7 +288,6 @@ export default function ProductDetailPage() {
                       isSelected ? 'border-botanical ring-1 ring-botanical/20' : 'border-stone-line/75'
                     }`}
                   >
-                    {/* Small image */}
                     <div className="w-10 h-10 bg-stone-100 rounded-sm overflow-hidden border border-stone-line flex-shrink-0">
                       <img 
                         src={item.image} 
@@ -300,12 +299,10 @@ export default function ProductDetailPage() {
                         className="w-full h-full object-cover" 
                       />
                     </div>
-                    {/* Name & price */}
                     <div className="flex-1 min-w-0">
                       <h5 className="font-serif text-[13px] text-charcoal font-semibold truncate">{item.name}</h5>
                       <span className="font-sans text-[10px] font-bold text-botanical uppercase tracking-wider">Coming Soon</span>
                     </div>
-                    {/* Circle Checkbox */}
                     <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                       isSelected ? 'bg-botanical border-botanical text-white' : 'border-stone-line bg-canvas'
                     }`}>
@@ -315,10 +312,10 @@ export default function ProductDetailPage() {
                 );
               })}
             </div>
-          </div>
+          </div> */}
 
           {/* Gift Message Generator */}
-          <div className="bg-white border border-stone-line p-4 rounded-sm space-y-2">
+          {/* <div className="bg-white border border-stone-line p-4 rounded-sm space-y-2">
             <div className="flex justify-between items-baseline">
               <label className="block text-[10px] uppercase tracking-wider font-semibold text-charcoal">
                 Handwritten Gift Message
@@ -334,12 +331,11 @@ export default function ProductDetailPage() {
               rows={3}
               className="w-full bg-canvas border border-stone-line p-3 text-xs font-sans focus:outline-none focus:border-botanical text-charcoal rounded-sm resize-none"
             />
-          </div>
+          </div> */}
 
           {/* CTA Add-To-Cart & Quantity Picker */}
-          {product.inStock ? (
+          {/* {product.inStock ? (
             <div className="flex space-x-3 pt-2">
-              {/* Qty Manager */}
               <div className="flex items-center border border-stone-line bg-canvas rounded-sm">
                 <button
                   onClick={() => setQty((prev) => Math.max(1, prev - 1))}
@@ -358,7 +354,6 @@ export default function ProductDetailPage() {
                 </button>
               </div>
 
-              {/* Add to Cart Button */}
               <button
                 onClick={handleAddToCart}
                 className="flex-1 bg-terracotta hover:bg-opacity-95 text-white py-3 px-6 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2 rounded-xs shadow-md transition-all focus:outline-none"
@@ -367,7 +362,6 @@ export default function ProductDetailPage() {
                 <span>Add to Cart • Coming Soon</span>
               </button>
 
-              {/* Wishlist Button */}
               <button
                 onClick={() => toggleWishlist(product.id)}
                 className="p-3 border border-stone-line rounded-sm hover:border-botanical hover:bg-stone-50 transition-all flex items-center justify-center"
@@ -380,7 +374,25 @@ export default function ProductDetailPage() {
             <div className="bg-stone-100 border border-stone-line p-4 text-center rounded-sm">
               <span className="font-serif text-sm font-semibold text-warm-neutral">This display is currently out of stock</span>
             </div>
-          )}
+          )} */}
+
+          {/* Direct Atelier Inquiry Button & Wishlist */}
+          <div className="flex space-x-3 pt-2">
+            <Link
+              to="/contact"
+              className="flex-1 bg-[#1B3B2B] hover:bg-black text-white py-3 px-6 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2 rounded-xs shadow-md transition-all focus:outline-none"
+            >
+              <span>Inquire / Reserve Design</span>
+            </Link>
+
+            <button
+              onClick={() => toggleWishlist(product.id)}
+              className="p-3 border border-stone-line rounded-sm hover:border-botanical hover:bg-stone-50 transition-all flex items-center justify-center"
+              aria-label="Wishlist Toggle"
+            >
+              <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-terracotta text-terracotta' : 'text-charcoal'}`} />
+            </button>
+          </div>
 
           {/* Guarantees Box */}
           <div className="text-[10px] text-warm-neutral font-sans flex items-center space-x-1.5 justify-center py-2 bg-stone-50/50 rounded-sm border border-stone-line/50">
