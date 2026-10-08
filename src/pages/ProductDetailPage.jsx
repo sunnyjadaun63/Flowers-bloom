@@ -35,7 +35,7 @@ export default function ProductDetailPage() {
     setDeliveryDate 
   } = useCart();
 
-  const product = products.find(p => p.id === id);
+  const product = products.find(p => p.id === id || p.productCode === id);
 
   if (!product) {
     return (
@@ -171,10 +171,15 @@ export default function ProductDetailPage() {
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-warm-neutral uppercase tracking-widest font-semibold">
               <span>{product.category}</span>
-              <span>{product.stemCount} premium stems</span>
+              <span className="font-mono text-xs font-bold text-charcoal bg-stone-100 border border-stone-line/80 px-2.5 py-0.5 rounded-xs">
+                Product Code: {product.productCode || product.id}
+              </span>
+              {/* Stems commented out per request */}
+              {/* <span>{product.stemCount} premium stems</span> */}
             </div>
             
             <h1 className="font-serif text-3xl sm:text-4xl text-charcoal font-semibold leading-tight">
+              <span className="font-mono text-xl sm:text-2xl text-botanical font-bold mr-2">[{product.productCode || product.id}]</span>
               {product.name}
             </h1>
 

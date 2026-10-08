@@ -32,6 +32,8 @@ export default function SearchModal({ isOpen, onClose }) {
       const q = query.toLowerCase();
       return (
         product.name.toLowerCase().includes(q) ||
+        (product.productCode && product.productCode.toLowerCase().includes(q)) ||
+        product.id.toLowerCase().includes(q) ||
         product.category.toLowerCase().includes(q) ||
         product.description.toLowerCase().includes(q) ||
         product.occasion.some(occ => occ.toLowerCase().includes(q))
@@ -124,10 +126,12 @@ export default function SearchModal({ isOpen, onClose }) {
                     {/* Info */}
                     <div className="flex-1 min-w-0">
                       <h4 className="font-serif text-sm text-charcoal font-medium group-hover:text-botanical transition-colors duration-150 truncate">
+                        <span className="font-mono text-xs font-bold text-botanical mr-1.5">[{product.productCode || product.id}]</span>
                         {product.name}
                       </h4>
                       <p className="text-[11px] text-warm-neutral uppercase tracking-wider mt-0.5">
-                        {product.category} • {product.stemCount} Stems
+                        {product.category}
+                        {/* • {product.stemCount} Stems */}
                       </p>
                     </div>
                     {/* Rating & Price */}

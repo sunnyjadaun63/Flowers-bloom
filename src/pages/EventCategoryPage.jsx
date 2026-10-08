@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { eventCategories } from '../data/eventsData';
+import { products } from '../data/products';
+import ProductCard from '../components/ProductCard';
 import { SideRibbons } from '../components/DecorativeRibbon';
 import { 
   Calendar, 
@@ -27,6 +29,23 @@ export default function EventCategoryPage() {
   if (currentSlug === 'grand-openings') currentSlug = 'corporate';
 
   const eventData = eventCategories.find(c => c.slug === currentSlug) || eventCategories[0];
+
+  // State for V2 Collection filter tab
+  const [v2SubFilter, setV2SubFilter] = useState('all');
+
+  const v2Products = useMemo(() => {
+    const allV2 = products.filter(p => p.id && p.id.startsWith('v2-'));
+    if (v2SubFilter === 'bday') {
+      return allV2.filter(p => p.images[0]?.includes('/BDAY/'));
+    }
+    if (v2SubFilter === 'balloons') {
+      return allV2.filter(p => p.images[0]?.includes('Ballons'));
+    }
+    if (v2SubFilter === 'reveal') {
+      return allV2.filter(p => p.images[0]?.includes('Gender Reveal'));
+    }
+    return allV2;
+  }, [v2SubFilter]);
 
   // State for Service Filter & Active Service Modal
   const [selectedService, setSelectedService] = useState(null);
@@ -155,6 +174,55 @@ export default function EventCategoryPage() {
           ))}
         </div>
       </section>
+
+      {/* Version 2 Signature Birthday & Family Collection (Displayed On Top) */}
+      {currentSlug === 'birthdays' && (
+        <section id="v2-collection" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 animate-in fade-in duration-300">
+          <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-stone-line pb-6 gap-4">
+            <div>
+              <div className="inline-flex items-center space-x-2 text-[10px] uppercase tracking-widest font-semibold bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full text-emerald-900 mb-2">
+                <Sparkles className="w-3 h-3 text-emerald-700" />
+                <span>Version 2 Signature Catalog</span>
+              </div>
+              <h2 className="font-instrument text-3xl sm:text-4xl text-charcoal font-bold mt-1">
+                Birthday & Family Setups & Natural Flowers
+              </h2>
+              <p className="text-xs sm:text-sm text-warm-neutral mt-1 max-w-2xl">
+                Newly curated Version 2 bespoke arrangements — featuring organic garden florals, celebratory balloon installations, and gender reveal party backdrops.
+              </p>
+            </div>
+
+            {/* Sub-filter tabs */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-100 rounded-lg border border-stone-line">
+              {[
+                { id: 'all', label: 'All New (38)' },
+                { id: 'bday', label: 'Milestone Birthdays (20)' },
+                { id: 'balloons', label: 'Balloon Bouquets (6)' },
+                { id: 'reveal', label: 'Gender Reveal (12)' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setV2SubFilter(tab.id)}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all ${
+                    v2SubFilter === tab.id
+                      ? 'bg-black text-white shadow-xs'
+                      : 'text-charcoal hover:bg-white/80'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Product Card Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {v2Products.map((prod) => (
+              <ProductCard key={prod.id} product={prod} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 3. Services Grid Section */}
       <section id="services-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">

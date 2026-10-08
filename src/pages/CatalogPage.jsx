@@ -13,7 +13,7 @@ export default function CatalogPage({ categoryProp }) {
   const { wishlist } = useCart();
 
   // Filters State
-  const [priceRange, setPriceRange] = useState(160);
+  const [priceRange, setPriceRange] = useState(9999);
   const [selectedColor, setSelectedColor] = useState('all');
   const [minStems, setMinStems] = useState(0);
 
@@ -142,8 +142,8 @@ export default function CatalogPage({ categoryProp }) {
               </p>
             </div>
 
-            {/* Stem Count Filter */}
-            <div className="space-y-2">
+            {/* Stem Count Filter (Commented out per request) */}
+            {/* <div className="space-y-2">
               <label className="block text-[10px] uppercase tracking-wider font-semibold text-charcoal">
                 Min Stem Count: <span className="font-bold text-botanical">{minStems > 0 ? `${minStems} stems` : 'Any'}</span>
               </label>
@@ -162,7 +162,7 @@ export default function CatalogPage({ categoryProp }) {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Color Filter */}
             <div className="space-y-2">

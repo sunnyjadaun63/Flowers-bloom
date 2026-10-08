@@ -141,7 +141,7 @@ export default function Footer() {
 
         {/* Bottom copyright */}
         <div className="border-t border-stone-line pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-warm-neutral">
-          <p>© {new Date().getFullYear()} <a href="https://ritztekglobal.com/"> <b >Powered By Ritz Tek Global LLC.</b></a> </p>
+          {/* <p>© {new Date().getFullYear()} <a href="https://ritztekglobal.com/"> <b >Powered By Ritz Tek Global LLC.</b></a> </p> */}
           <div className="flex space-x-6 mt-4 sm:mt-0 font-medium">
             <a href="#privacy" className="hover:text-botanical transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-botanical transition-colors">Terms of Service</a>

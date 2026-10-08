@@ -65,6 +65,16 @@ const sentiments = {
       "Here's to new chapters, bold dreams, and well-deserved success. Congratulations!",
       "You did it! Sending you celebratory blooms to mark this incredible achievement."
     ]
+  },
+  "get-well": {
+    heading: "Uplifting Blooms & Healing Botanical Scents",
+    story: "Brighten their recovery and bring calming, restorative energy with sunshine yellow sunflowers, soothing lavender, and fragrant chamomile.",
+    colorClass: "text-amber-800 bg-amber-50/80 border-amber-200",
+    wishes: [
+      "Sending you warmest thoughts and wishes for a speedy and comfortable recovery!",
+      "May these vibrant fresh blooms bring a touch of sunshine and cheer to your room.",
+      "Thinking of you and wishing you strength, rest, and quick healing each day."
+    ]
   }
 };
 
@@ -81,7 +91,7 @@ const defaultSentiment = {
 
 export default function OccasionCatalogPage() {
   const { type } = useParams();
-  const [priceRange, setPriceRange] = useState(160);
+  const [priceRange, setPriceRange] = useState(9999);
   const [selectedVibe, setSelectedVibe] = useState('all'); // Vibe categories: all, romantic, minimalist, rustic, bold
   const [copiedWish, setCopiedWish] = useState('');
 

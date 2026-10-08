@@ -169,8 +169,8 @@ export default function NaturalFlowersPage() {
               </div>
             </div>
 
-            {/* Stem Count Filter */}
-            <div className="space-y-2">
+            {/* Stem Count Filter (Commented out per request) */}
+            {/* <div className="space-y-2">
               <label className="block text-[10px] uppercase tracking-wider font-semibold text-charcoal">
                 Min Stem Count: <span className="font-bold text-botanical">{minStems > 0 ? `${minStems} stems` : 'Any'}</span>
               </label>
@@ -189,7 +189,7 @@ export default function NaturalFlowersPage() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Color Filter */}
             <div className="space-y-2">

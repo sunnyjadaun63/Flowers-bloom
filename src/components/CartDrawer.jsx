@@ -151,12 +151,14 @@ export default function CartDrawer() {
                       {/* Item Details */}
                       <div className="flex-1 min-w-0">
                         <h4 className="font-serif text-sm text-charcoal font-medium truncate pr-6">
+                          <span className="font-mono text-xs font-bold text-botanical mr-1">[{item.product.productCode || item.product.id}]</span>
                           {item.product.name}
                         </h4>
                         <div className="text-[11px] text-warm-neutral mt-0.5 flex flex-wrap gap-x-2">
                           <span>Qty: {item.quantity}</span>
-                          <span>•</span>
-                          <span>{item.product.stemCount} Stems</span>
+                          {/* Stems commented out per request */}
+                          {/* <span>•</span> */}
+                          {/* <span>{item.product.stemCount} Stems</span> */}
                         </div>
 
                         {/* Selected Upsells */}

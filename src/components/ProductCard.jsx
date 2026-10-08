@@ -95,16 +95,21 @@ export default function ProductCard({ product }) {
       {/* Product Content Info Area */}
       <div className="p-5 flex-1 flex flex-col justify-between bg-white">
         <div>
-          {/* Category & Stem Count */}
+          {/* Category & Product Code */}
           <div className="flex items-center justify-between text-[11px] uppercase tracking-wider font-semibold text-warm-neutral mb-1.5">
             <span>{product.category}</span>
-            {product.stemCount > 1 && (
+            <span className="font-mono text-[10px] font-bold text-charcoal bg-stone-100 border border-stone-line/80 px-1.5 py-0.5 rounded-xs">
+              {product.productCode || product.id}
+            </span>
+            {/* Stems commented out per request */}
+            {/* {product.stemCount > 1 && (
               <span>{product.stemCount} Stems</span>
-            )}
+            )} */}
           </div>
 
-          {/* Product Name */}
+          {/* Product Name with ID Code */}
           <h3 className="font-serif text-base text-charcoal font-medium group-hover:text-botanical transition-colors duration-150 line-clamp-1 mb-1">
+            <span className="font-mono text-xs font-bold text-botanical mr-1.5">[{product.productCode || product.id}]</span>
             {product.name}
           </h3>
         </div>
